@@ -80,6 +80,25 @@ HAMqttDevice &HAMqttDevice::addAttribute(const String &name, const String &value
     return *this;
 }
 
+HAMqttDevice &HAMqttDevice::updateAttribute(const String &name, const String &value)
+{
+    int index = -1;
+    for (uint8_t i = 0; i < _attributes.size(); i++)
+    {
+        if(_attributes[i].key.equals(name)) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index >= 0) {
+        _attributes[index].value = value;     
+    } else {
+         _attributes.push_back({name, value});
+    }
+    return *this;
+}
+
 HAMqttDevice &HAMqttDevice::clearAttributes()
 {
     _attributes.clear();

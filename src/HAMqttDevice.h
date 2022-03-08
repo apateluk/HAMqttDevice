@@ -59,6 +59,7 @@ public:
 
     HAMqttDevice &addConfigVar(const String &key, const String &value);
     HAMqttDevice &addAttribute(const String &key, const String &value);
+    HAMqttDevice &updateAttribute(const String &name, const String &value);
     HAMqttDevice &clearAttributes();
 
     const String getConfigPayload() const;
